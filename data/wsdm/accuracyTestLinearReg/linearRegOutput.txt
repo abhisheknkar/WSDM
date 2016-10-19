@@ -1,18 +1,18 @@
-Radu Goldiş	Romania	0.0
-Radu Goldiş	United States of America	0.0
+Radu Goldiş	Romania	5.0
+Radu Goldiş	United States of America	3.0
 Romano Scavolini	Croatia	0.0
-Romano Scavolini	Italy	1.0
+Romano Scavolini	Italy	6.0
 Sade (singer)	Nigeria	0.0
-Sade (singer)	United Kingdom	0.0
-Sergei Rachmaninoff	Russia	3.0
+Sade (singer)	United Kingdom	1.0
+Sergei Rachmaninoff	Russia	5.0
 Sergei Rachmaninoff	United States of America	0.0
-Sofia Gubaidulina	Russia	2.0
-Sofia Gubaidulina	Soviet Union	0.0
-Stéphane Tchalgadjieff	Bulgaria	0.0
-Stéphane Tchalgadjieff	France	1.0
-Tammin Sursok	Australia	4.0
-Tammin Sursok	South Africa	0.0
-Trimpin	Germany	7.0
-Trimpin	United States of America	2.0
+Sofia Gubaidulina	Russia	4.0
+Sofia Gubaidulina	Soviet Union	1.0
+Stéphane Tchalgadjieff	Bulgaria	1.0
+Stéphane Tchalgadjieff	France	4.0
+Tammin Sursok	Australia	6.0
+Tammin Sursok	South Africa	1.0
+Trimpin	Germany	6.0
+Trimpin	United States of America	0.0
 Willis H. O'Brien	Republic of Ireland	0.0
 Willis H. O'Brien	United States of America	0.0

@@ -11,21 +11,29 @@ from sklearn.cross_validation import train_test_split
 
 class NationalitiesLinearRegression():
     domain = {}
+    people2ID = {}
+    ID2People = {}
+    '''
+    Variables of interest:
+    <basic> domain
+    <for mapping> people2ID, ID2people, ftrID2trainRowID
+    <for the ML> trainX, trainX, testX, features
+    <for classification> regModel, linearWeights
+    '''
 
-    trainPeople = {}
-    trainX = {}
-    trainY = {}
-    trainYdict = {}
+    def __init__(self, domainFile, featureFile, trainFile, testFile, outputFile):
+        self.testFile = testFile
+        self.outputFile = outputFile
 
-    testPeople = {}
-    testDict = set()
-
-    def __init__(self, domainFile, trainXFile, trainYFile):
         self.readDomains(domainFile)
+        self.readAllFeatures(featureFile)
+        self.getTrainMatrices(trainFile)
 
-        self.readTrainX(trainXFile)
-        self.readTrainY(trainYFile)
-        self.performLinearRegression()
+        self.getDimensionalityReductionModel()
+        self.trainRegressionModel(self.trainX_red, self.trainY.toarray())
+
+        self.predict(accuracyFlag=True)
+
 
     def readDomains(self, domainFile):
         f = open(domainFile, 'r')
@@ -34,120 +42,127 @@ class NationalitiesLinearRegression():
             self.domain[l] = idx    # Create an entry for the profession
         f.close()
 
-    def readTrainY(self, trainFile):
-        f = codecs.open(trainFile, mode='r', encoding='utf-8')
-        for line in f.readlines():
-            line = line.strip()
-            l = line.split('\t')
+    def readAllFeatures(self, featureFile):
+        self.features = None
 
-            self.trainYdict[(self.trainPeople[l[0]], self.domain[l[1]])] = int(l[2])
-        f.close()
-
-        self.trainY = lil_matrix((len(self.trainPeople), len(self.domain)), dtype=float)
-        for idx,loc in enumerate(self.trainYdict):
-            self.trainY[loc[0],loc[1]] = self.trainYdict[(loc[0], loc[1])]
-        self.trainY = csr_matrix(self.trainY)
-
-    def readTrainX(self, trainXFile):
-        with open(trainXFile) as data_file:
+        with open(featureFile) as data_file:
             data = json.load(data_file, encoding="utf-8")
-
         for sample in data:
-            if sample.keys()[0] not in self.trainPeople:
-                self.trainPeople[sample.keys()[0]] = len(self.trainPeople)    # Create an entry for the person
+            if sample.keys()[0] not in self.people2ID:
+                self.people2ID[sample.keys()[0]] = len(self.people2ID)    # Create an entry for the person
+                self.ID2People[len(self.people2ID)-1] = sample.keys()[0]
 
-        trainX0 = lil_matrix((len(self.trainPeople), len(self.domain)), dtype=float)
-        trainX1 = lil_matrix((len(self.trainPeople), len(self.domain)), dtype=float)
+        ftr0 = lil_matrix((len(self.people2ID), len(self.domain)), dtype=float)
+        ftr1 = lil_matrix((len(self.people2ID), len(self.domain)), dtype=float)
 
         for sample in data:
             person = sample.keys()[0]
             features = sample[person]
 
-            rowID = self.trainPeople[person]
+            rowID = self.people2ID[person]
             for country in features:
                 if country in self.domain:
                     colID = self.domain[country]
+                ftr0[rowID,colID] = features[country][0]
+                ftr1[rowID,colID] = features[country][1]
+        self.features = csr_matrix(hstack((ftr0, ftr1)))
 
-                trainX0[rowID,colID] = features[country][0]
-                trainX1[rowID,colID] = features[country][1]
+    def getTrainMatrices(self, trainFile):
+        trainYdict = {}
+        f = codecs.open(trainFile, mode='r', encoding='utf-8')
+        for line in f.readlines():
+            line = line.strip()
+            l = line.split('\t')
+            trainYdict[(self.people2ID[l[0]], self.domain[l[1]])] = int(l[2])
+        f.close()
+        # Get mapping from train set to row in matrix
+        self.ftrID2trainRowID = {}
+        for person in trainYdict:
+            if person[0] not in self.ftrID2trainRowID:
+                self.ftrID2trainRowID[person[0]] = len(self.ftrID2trainRowID)
 
-        self.trainX = hstack((trainX0, trainX1))
-        # self.trainX = trainX1
+        self.trainX = lil_matrix((len(self.ftrID2trainRowID), self.features.shape[1]), dtype=float)
+        self.trainY = lil_matrix((len(self.ftrID2trainRowID), len(self.domain)), dtype=float)
+        for idx,loc in enumerate(trainYdict):
+            self.trainX[self.ftrID2trainRowID[loc[0]],:] = self.features[loc[0],:]
+            self.trainY[self.ftrID2trainRowID[loc[0]],loc[1]] = trainYdict[(loc[0], loc[1])]
+        self.trainX = csr_matrix(self.trainX)
+        self.trainY = csr_matrix(self.trainY)
 
-    def performLinearRegression(self):
-        # trainX_Red = self.trainX.toarray()
-        # pca = PCA(n_components=0.90)
-        # trainX_Red = pca.fit_transform(trainX_Red)
+    def getDimensionalityReductionModel(self, split=False):
+        trainX = self.trainX.toarray()
+        trainY = self.trainY.toarray()
 
-        self.trainX = self.trainX.toarray()
-        self.trainY = self.trainY.toarray()
+        if split:
+            trainX, self.testX, trainY, self.testY = train_test_split(self.trainX, self.trainY, test_size=0.2, random_state=0)
 
-        trainX, self.testX, trainY, self.testY = train_test_split(self.trainX, self.trainY, test_size=0.2, random_state=0)
-        # trainX, trainY = self.trainX, self.trainY
+        self.reductionModel = PCA(n_components=0.95)
+        self.reductionModel.fit(trainX)
+        self.trainX_red = self.reductionModel.transform(trainX)
 
-        # self.regModel = linear_model.LinearRegression()
-        self.regModel = linear_model.Ridge(alpha=0.1)
-        self.regModel.fit(trainX, trainY)
-        self.linearWeights = self.regModel.coef_.transpose()
+        if split:
+            self.testX_red = self.reductionModel.transform(self.testX)
 
-    def getScore(self, inputTuple):
-        if not inputTuple[0] in self.trainPeople:
+    def getLinRegScore(self, inputTuple):
+        if not inputTuple[0] in self.people2ID:
             return 0
         else:
-            if inputTuple[0] not in self.trainPeople:
+            if inputTuple[0] not in self.people2ID:
                 return 0
-            rowID = self.trainPeople[inputTuple[0]]
+            rowID = self.people2ID[inputTuple[0]]
             colID = self.domain[inputTuple[1]]
-            return np.dot(self.trainX[rowID,:], self.linearWeights[:,colID])
+            testRow = self.reductionModel.transform(self.features[rowID,:].toarray())
+            return np.dot(testRow, self.linearWeights[:,colID])
 
-    def getAccuracy(self, fileName):
-        f = codecs.open(fileName, 'r', encoding='utf-8')
-        comparison = []
-        diff = []
-        for idx, line in enumerate(f.readlines()):
-            lineSplit = line.strip().split('\t')
-            inputTuple = (lineSplit[0], lineSplit[1])
-            score = self.getScore(inputTuple)
-            if score < 0:
-                score = 0
-            if score > 7:
-                score = 7
+    def predict(self, accuracyFlag=False):
+        # This is for the train-test split. Given a file with test tuples in it,
+        # this function computes the predictions for each of tuples, with optional computation of accuracy
+        f1 = codecs.open(self.testFile, 'r', encoding='utf-8')
+        f2 = codecs.open(self.outputFile, 'w', encoding='utf-8')
 
-            truth = int(lineSplit[2])
-            diff.append(abs(truth-score))
-            comparison.append(truth-2<=score<=truth+2)
-        accuracy = float(sum(comparison)) / len(comparison)
-        print accuracy, np.mean(diff)
-        print comparison
-        f.close()
+        if accuracyFlag:
+            comparison = []
+            diff = []
 
-    def predict(self, inFile, outFile):
-        f1 = codecs.open(inFile, 'r', encoding='utf-8')
-        f2= codecs.open(outFile, 'w', encoding='utf-8')
         for idx, line in enumerate(f1.readlines()):
             lineSplit = line.strip().split('\t')
             inputTuple = (lineSplit[0], lineSplit[1])
-            score = self.getScore(inputTuple)
+            score = self.getLinRegScore(inputTuple)
             if score < 0:
                 score = 0
-            if score > 7:
+            elif score > 7:
                 score = 7
+            if accuracyFlag:
+                truth = int(lineSplit[2])
+                diff.append(abs(truth-score))
+                comparison.append(truth-2<=score<=truth+2)
             f2.write(inputTuple[0]+'\t' + inputTuple[1] +'\t' + str(round(score))+'\n')
-        f2.close()
+
+        if accuracyFlag:
+            accuracy = float(sum(comparison)) / len(comparison)
+            print 'Accuracy: ', accuracy, '\nMean absolute error: ', np.mean(diff)
+
         f1.close()
+        f2.close()
+
+    def trainRegressionModel(self, trainX, trainY):
+        # self.regModel = linear_model.LinearRegression()
+        self.regModel = linear_model.Lasso(alpha=0.01)
+        # self.regModel = linear_model.Ridge(alpha=0.01)
+
+        self.regModel.fit(trainX, trainY)
+        self.linearWeights = self.regModel.coef_.transpose()
 
 if __name__ == '__main__':
     t0 = time.time()
+
+    # All the files:
     domainFile = '../data/wsdm/nationalities'
-    trainXFile = '../data/wsdm/nationalities.json'
-    # trainYFile = '../data/wsdm/nationality.train'
-    trainYFile = '../data/wsdm/accuracyTestLinearReg/nationalityTrain.train'
+    featureFile = '../data/wsdm/nationalities.json'
+    trainFile = '../data/wsdm/accuracyTestLinearReg/nationalityTrain.train'
+    testFile = '../data/wsdm/accuracyTestLinearReg/nationalityTest.train'
+    outputFile = '../data/wsdm/accuracyTestLinearReg/linearRegOutput.txt'
 
-    # domainFile = '../data/wsdm/professions'
-    # trainFile = '../data/wsdm/profession.train'
-
-    regObject = NationalitiesLinearRegression(domainFile, trainXFile, trainYFile)
-    regObject.predict('../data/wsdm/accuracyTestLinearReg/nationalityTest.train', '../data/wsdm/accuracyTestLinearReg/linearRegOutput.txt')
-    # regObject.getAccuracy('../data/wsdm/accuracyTestLinearReg/nationalityTest.train')
+    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile)
 
     print 'Time elapsed: ', time.time()-t0
