@@ -1,18 +1,162 @@
-Radu Goldiş	Romania	5.0
-Radu Goldiş	United States of America	3.0
-Romano Scavolini	Croatia	0.0
-Romano Scavolini	Italy	6.0
-Sade (singer)	Nigeria	0.0
-Sade (singer)	United Kingdom	1.0
+Adeyto	France	6.0
+Adeyto	Germany	0.0
+Alami Ahannach	Morocco	3.0
+Alami Ahannach	Netherlands	3.0
+Alanis Morissette	Canada	3.0
+Alanis Morissette	United States of America	0.0
+Albert Einstein	Germany	6.0
+Albert Einstein	Switzerland	3.0
+Albert Einstein	United States of America	2.0
+Alexander G. Fraser	United Kingdom	4.0
+Alexander G. Fraser	United States of America	0.0
+Al Ferguson	Republic of Ireland	6.0
+Al Ferguson	United States of America	1.0
+Alfred Hitchcock	United Kingdom	4.0
+Alfred Hitchcock	United States of America	0.0
+Amanda Lear	France	0.0
+Amanda Lear	United Kingdom	0.0
+Amina Figarova	Azerbaijan	6.0
+Amina Figarova	Netherlands	0.0
+Anggun	France	6.0
+Anggun	Indonesia	7.0
+Anna Foerster	Germany	6.0
+Anna Foerster	United States of America	2.0
+Anthony Hopkins	United Kingdom	5.0
+Anthony Hopkins	United States of America	1.0
+Arash Amel	Iran	0.0
+Arash Amel	United Kingdom	5.0
+Arman	France	4.0
+Arman	United States of America	3.0
+Assala Nasri	Bahrain	1.0
+Assala Nasri	Syria	3.0
+Basil Rathbone	South Africa	1.0
+Basil Rathbone	United Kingdom	4.0
+Bobby Fischer	Germany	0.0
+Bobby Fischer	Iceland	3.0
+Bobby Fischer	United States of America	3.0
+Boris Johnson	United Kingdom	4.0
+Boris Johnson	United States of America	1.0
+Cynthia Rothrock	Hong Kong	0.0
+Cynthia Rothrock	United States of America	1.0
+Dave Lombardo	Cuba	5.0
+Dave Lombardo	United States of America	1.0
+David Mumford	United Kingdom	3.0
+David Mumford	United States of America	1.0
+Dick Johnson (glider pilot)	Canada	5.0
+Dick Johnson (glider pilot)	United States of America	4.0
+Don Nicholl	United Kingdom	2.0
+Don Nicholl	United States of America	0.0
+Doris Lessing	Iran	1.0
+Doris Lessing	United Kingdom	5.0
+Eduardo Sánchez (director)	Cuba	5.0
+Eduardo Sánchez (director)	United States of America	4.0
+Ernest William Brown	United Kingdom	4.0
+Ernest William Brown	United States of America	0.0
+Errol Flynn	Australia	5.0
+Errol Flynn	United Kingdom	0.0
+Errol Flynn	United States of America	4.0
+Francesca Gregorini	Italy	6.0
+Francesca Gregorini	United States of America	4.0
+Frank Gehry	Canada	5.0
+Frank Gehry	United States of America	1.0
+Frederick Loewe	Austria	5.0
+Frederick Loewe	Germany	3.0
+Frederick Loewe	United States of America	4.0
+Friedrich Hayek	Austria	1.0
+Friedrich Hayek	United Kingdom	2.0
+Galina Vishnevskaya	Russia	6.0
+Galina Vishnevskaya	United States of America	0.0
+George Bernard Shaw	Republic of Ireland	0.0
+George Bernard Shaw	United Kingdom	3.0
+George Santayana	Spain	1.0
+George Santayana	United States of America	0.0
+Georges Dufaux	Canada	4.0
+Georges Dufaux	France	1.0
+George VI	India	2.0
+George VI	United Kingdom	5.0
+Gerhard Herzberg	Canada	4.0
+Gerhard Herzberg	Germany	4.0
+Germinal Pierre Dandelin	Belgium	7.0
+Germinal Pierre Dandelin	Netherlands	5.0
+Gilles Bensimon	France	2.0
+Gilles Bensimon	United States of America	1.0
+Hazel Phillips	Australia	2.0
+Hazel Phillips	United Kingdom	3.0
+Hilaire Belloc	France	4.0
+Hilaire Belloc	United Kingdom	4.0
+H. L. Mencken	Germany	0.0
+H. L. Mencken	United States of America	1.0
+Ignatius Jones	Australia	6.0
+Ignatius Jones	Spain	0.0
+Ione Skye	United Kingdom	5.0
+Ione Skye	United States of America	5.0
+Jacques Offenbach	France	2.0
+Jacques Offenbach	Germany	6.0
+Jason Barry	Republic of Ireland	4.0
+Jason Barry	United Kingdom	0.0
+Jean Alesi	France	5.0
+Jean Alesi	Italy	2.0
+John Kemeny (film producer)	Canada	5.0
+John Kemeny (film producer)	Hungary	2.0
+Jonathan Swift	Republic of Ireland	1.0
+Jonathan Swift	United Kingdom	2.0
+Joseph Priestley	United Kingdom	4.0
+Joseph Priestley	United States of America	0.0
+J. Torres	Canada	5.0
+J. Torres	Philippines	5.0
+Kenneth Ross (screenwriter)	Scotland	6.0
+Kenneth Ross (screenwriter)	United States of America	2.0
+Ladislaus Vajda	Germany	1.0
+Ladislaus Vajda	Hungary	7.0
+Leslie Cheung	Canada	2.0
+Leslie Cheung	Hong Kong	7.0
+Marc Chagall	France	5.0
+Marc Chagall	Russia	7.0
+Marc Chagall	United States of America	0.0
+Marc Rich	Belgium	6.0
+Marc Rich	Israel	3.0
+Marc Rich	Spain	1.0
+Marc Rich	Switzerland	3.0
+Marc Rich	United States of America	2.0
+Marius Petipa	France	2.0
+Marius Petipa	Russia	4.0
+MC Mario	Canada	5.0
+MC Mario	France	0.0
+Michiko Kakutani	Japan	4.0
+Michiko Kakutani	United States of America	3.0
+Montague Chamberlain	Canada	3.0
+Montague Chamberlain	United States of America	0.0
+Nellie McKay	United Kingdom	2.0
+Nellie McKay	United States of America	1.0
+Nikola Tesla	Croatia	1.0
+Nikola Tesla	United States of America	3.0
+Olga Lehmann	Chile	7.0
+Olga Lehmann	United Kingdom	5.0
+Olga Morozova	Russia	6.0
+Olga Morozova	Soviet Union	2.0
+Paul Collins (actor)	United Kingdom	5.0
+Paul Collins (actor)	United States of America	0.0
+Peter Gabriel	South Africa	0.0
+Peter Gabriel	United Kingdom	1.0
+Peter Lawford	United Kingdom	3.0
+Peter Lawford	United States of America	1.0
+Phillip Borsos	Australia	0.0
+Phillip Borsos	Canada	5.0
+Radu Goldiş	Romania	6.0
+Radu Goldiş	United States of America	4.0
+Romano Scavolini	Croatia	1.0
+Romano Scavolini	Italy	7.0
+Sade (singer)	Nigeria	4.0
+Sade (singer)	United Kingdom	5.0
 Sergei Rachmaninoff	Russia	5.0
 Sergei Rachmaninoff	United States of America	0.0
-Sofia Gubaidulina	Russia	4.0
-Sofia Gubaidulina	Soviet Union	1.0
-Stéphane Tchalgadjieff	Bulgaria	1.0
+Sofia Gubaidulina	Russia	5.0
+Sofia Gubaidulina	Soviet Union	2.0
+Stéphane Tchalgadjieff	Bulgaria	3.0
 Stéphane Tchalgadjieff	France	4.0
-Tammin Sursok	Australia	6.0
-Tammin Sursok	South Africa	1.0
-Trimpin	Germany	6.0
+Tammin Sursok	Australia	7.0
+Tammin Sursok	South Africa	3.0
+Trimpin	Germany	7.0
 Trimpin	United States of America	0.0
 Willis H. O'Brien	Republic of Ireland	0.0
-Willis H. O'Brien	United States of America	0.0
+Willis H. O'Brien	United States of America	3.0

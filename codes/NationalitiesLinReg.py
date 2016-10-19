@@ -65,7 +65,8 @@ class NationalitiesLinearRegression():
                     colID = self.domain[country]
                 ftr0[rowID,colID] = features[country][0]
                 ftr1[rowID,colID] = features[country][1]
-        self.features = csr_matrix(hstack((ftr0, ftr1)))
+        # self.features = csr_matrix(hstack((ftr0, ftr1)))
+        self.features = csr_matrix(6*ftr0+ftr1)
 
     def getTrainMatrices(self, trainFile):
         trainYdict = {}
@@ -147,8 +148,8 @@ class NationalitiesLinearRegression():
 
     def trainRegressionModel(self, trainX, trainY):
         # self.regModel = linear_model.LinearRegression()
-        self.regModel = linear_model.Lasso(alpha=0.01)
-        # self.regModel = linear_model.Ridge(alpha=0.01)
+        # self.regModel = linear_model.Lasso(alpha=0.01)
+        self.regModel = linear_model.Ridge(alpha=0.01)
 
         self.regModel.fit(trainX, trainY)
         self.linearWeights = self.regModel.coef_.transpose()

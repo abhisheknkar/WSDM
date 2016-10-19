@@ -36,14 +36,16 @@
       <file leaf-file-name="NationalitiesLinReg.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/codes/NationalitiesLinReg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70857143">
-              <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+            <state vertical-scroll-proportion="1.1171429">
+              <caret line="91" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="168" selection-end-column="42" />
               <folding>
                 <element signature="e#690#1035#0" expanded="false" />
                 <element signature="e#1085#1281#0" expanded="false" />
-                <element signature="e#1335#2332#0" expanded="false" />
-                <element signature="e#2385#3424#0" expanded="false" />
-                <element signature="e#4009#4407#0" expanded="false" />
+                <element signature="e#1335#2382#0" expanded="false" />
+                <element signature="e#2435#3474#0" expanded="false" />
+                <element signature="e#4059#4457#0" expanded="false" />
+                <element signature="e#4510#5683#0" expanded="false" />
+                <element signature="e#5745#6010#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -340,7 +342,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3360522" sideWeight="0.48809522" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3360522" sideWeight="0.48809522" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.4940476" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -387,9 +389,11 @@
           <folding>
             <element signature="e#690#1035#0" expanded="false" />
             <element signature="e#1085#1281#0" expanded="false" />
-            <element signature="e#1335#2332#0" expanded="false" />
-            <element signature="e#2385#3424#0" expanded="false" />
-            <element signature="e#4009#4407#0" expanded="false" />
+            <element signature="e#1335#2382#0" expanded="false" />
+            <element signature="e#2435#3474#0" expanded="false" />
+            <element signature="e#4059#4457#0" expanded="false" />
+            <element signature="e#4510#5683#0" expanded="false" />
+            <element signature="e#5745#6010#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -411,9 +415,11 @@
           <folding>
             <element signature="e#690#1035#0" expanded="false" />
             <element signature="e#1085#1281#0" expanded="false" />
-            <element signature="e#1335#2332#0" expanded="false" />
-            <element signature="e#2385#3424#0" expanded="false" />
-            <element signature="e#4009#4407#0" expanded="false" />
+            <element signature="e#1335#2382#0" expanded="false" />
+            <element signature="e#2435#3474#0" expanded="false" />
+            <element signature="e#4059#4457#0" expanded="false" />
+            <element signature="e#4510#5683#0" expanded="false" />
+            <element signature="e#5745#6010#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -435,9 +441,11 @@
           <folding>
             <element signature="e#690#1035#0" expanded="false" />
             <element signature="e#1085#1281#0" expanded="false" />
-            <element signature="e#1335#2332#0" expanded="false" />
-            <element signature="e#2385#3424#0" expanded="false" />
-            <element signature="e#4009#4407#0" expanded="false" />
+            <element signature="e#1335#2382#0" expanded="false" />
+            <element signature="e#2435#3474#0" expanded="false" />
+            <element signature="e#4059#4457#0" expanded="false" />
+            <element signature="e#4510#5683#0" expanded="false" />
+            <element signature="e#5745#6010#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -459,9 +467,11 @@
           <folding>
             <element signature="e#690#1035#0" expanded="false" />
             <element signature="e#1085#1281#0" expanded="false" />
-            <element signature="e#1335#2332#0" expanded="false" />
-            <element signature="e#2385#3424#0" expanded="false" />
-            <element signature="e#4009#4407#0" expanded="false" />
+            <element signature="e#1335#2382#0" expanded="false" />
+            <element signature="e#2435#3474#0" expanded="false" />
+            <element signature="e#4059#4457#0" expanded="false" />
+            <element signature="e#4510#5683#0" expanded="false" />
+            <element signature="e#5745#6010#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -537,14 +547,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/codes/NationalitiesLinReg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70857143">
-          <caret line="98" column="51" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+        <state vertical-scroll-proportion="1.1171429">
+          <caret line="91" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="168" selection-end-column="42" />
           <folding>
             <element signature="e#690#1035#0" expanded="false" />
             <element signature="e#1085#1281#0" expanded="false" />
-            <element signature="e#1335#2332#0" expanded="false" />
-            <element signature="e#2385#3424#0" expanded="false" />
-            <element signature="e#4009#4407#0" expanded="false" />
+            <element signature="e#1335#2382#0" expanded="false" />
+            <element signature="e#2435#3474#0" expanded="false" />
+            <element signature="e#4059#4457#0" expanded="false" />
+            <element signature="e#4510#5683#0" expanded="false" />
+            <element signature="e#5745#6010#0" expanded="false" />
           </folding>
         </state>
       </provider>
