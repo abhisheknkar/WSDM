@@ -10,7 +10,8 @@ from sklearn import linear_model
 from sklearn.cross_validation import train_test_split
 
 class NationalitiesLinearRegression():
-    domain = {}
+    domain2ID = {}
+    ID2domain = {}
     people2ID = {}
     ID2People = {}
     '''
@@ -21,25 +22,26 @@ class NationalitiesLinearRegression():
     <for classification> regModel, linearWeights
     '''
 
-    def __init__(self, domainFile, featureFile, trainFile, testFile, outputFile):
+    def __init__(self, domainFile, featureFile, trainFile, testFile, outputFile, toReduce=True, model=1):
         self.testFile = testFile
         self.outputFile = outputFile
 
         self.readDomains(domainFile)
         self.readAllFeatures(featureFile)
-        self.getTrainMatrices(trainFile)
 
-        self.getDimensionalityReductionModel()
+        self.getTrainMatrices(trainFile, model=model)
+
+        self.getDimensionalityReductionModel(toReduce=toReduce)
         self.trainRegressionModel(self.trainX_red, self.trainY.toarray())
 
-        self.predict(accuracyFlag=True)
-
+        self.predict(accuracyFlag=True, toReduce=toReduce, model=model)
 
     def readDomains(self, domainFile):
         f = open(domainFile, 'r')
         for idx, line in enumerate(f.readlines()):
             l = line.strip()
-            self.domain[l] = idx    # Create an entry for the profession
+            self.domain2ID[l] = idx    # Create an entry for the profession
+            self.ID2domain[idx] = l    # Create an entry for the profession
         f.close()
 
     def readAllFeatures(self, featureFile):
@@ -52,8 +54,8 @@ class NationalitiesLinearRegression():
                 self.people2ID[sample.keys()[0]] = len(self.people2ID)    # Create an entry for the person
                 self.ID2People[len(self.people2ID)-1] = sample.keys()[0]
 
-        ftr0 = lil_matrix((len(self.people2ID), len(self.domain)), dtype=float)
-        ftr1 = lil_matrix((len(self.people2ID), len(self.domain)), dtype=float)
+        self.ftr0 = lil_matrix((len(self.people2ID), len(self.domain2ID)), dtype=float)
+        self.ftr1 = lil_matrix((len(self.people2ID), len(self.domain2ID)), dtype=float)
 
         for sample in data:
             person = sample.keys()[0]
@@ -61,61 +63,67 @@ class NationalitiesLinearRegression():
 
             rowID = self.people2ID[person]
             for country in features:
-                if country in self.domain:
-                    colID = self.domain[country]
-                ftr0[rowID,colID] = features[country][0]
-                ftr1[rowID,colID] = features[country][1]
-        # self.features = csr_matrix(hstack((ftr0, ftr1)))
-        self.features = csr_matrix(6*ftr0+ftr1)
+                if country in self.domain2ID:
+                    colID = self.domain2ID[country]
+                self.ftr0[rowID,colID] = features[country][0]
+                self.ftr1[rowID,colID] = features[country][1]
+        self.features = csr_matrix(hstack((self.ftr0, self.ftr1)))
+        # self.features = csr_matrix(6*ftr0+ftr1)
 
-    def getTrainMatrices(self, trainFile):
+    def getTrainMatrices(self, trainFile, model=1):
         trainYdict = {}
         f = codecs.open(trainFile, mode='r', encoding='utf-8')
         for line in f.readlines():
             line = line.strip()
             l = line.split('\t')
-            trainYdict[(self.people2ID[l[0]], self.domain[l[1]])] = int(l[2])
+            trainYdict[(self.people2ID[l[0]], self.domain2ID[l[1]])] = int(l[2])
         f.close()
-        # Get mapping from train set to row in matrix
-        self.ftrID2trainRowID = {}
-        for person in trainYdict:
-            if person[0] not in self.ftrID2trainRowID:
-                self.ftrID2trainRowID[person[0]] = len(self.ftrID2trainRowID)
 
-        self.trainX = lil_matrix((len(self.ftrID2trainRowID), self.features.shape[1]), dtype=float)
-        self.trainY = lil_matrix((len(self.ftrID2trainRowID), len(self.domain)), dtype=float)
-        for idx,loc in enumerate(trainYdict):
-            self.trainX[self.ftrID2trainRowID[loc[0]],:] = self.features[loc[0],:]
-            self.trainY[self.ftrID2trainRowID[loc[0]],loc[1]] = trainYdict[(loc[0], loc[1])]
+        if model == 1:
+            # Get mapping from train set to row in matrix
+            self.ftrID2trainRowID = {}
+            for person in trainYdict:
+                if person[0] not in self.ftrID2trainRowID:
+                    self.ftrID2trainRowID[person[0]] = len(self.ftrID2trainRowID)
+
+            self.trainX = lil_matrix((len(self.ftrID2trainRowID), self.features.shape[1]), dtype=float)
+            self.trainY = lil_matrix((len(self.ftrID2trainRowID), len(self.domain2ID)), dtype=float)
+            for idx,loc in enumerate(trainYdict):
+                self.trainX[self.ftrID2trainRowID[loc[0]],:] = self.features[loc[0],:]
+                self.trainY[self.ftrID2trainRowID[loc[0]],loc[1]] = trainYdict[(loc[0], loc[1])]
+        elif model == 2:
+            self.trainX = np.zeros((len(trainYdict), 2), dtype=float)
+            self.trainY = np.zeros((len(trainYdict), 1), dtype=float)
+            for idx,loc in enumerate(trainYdict):
+                self.trainX[idx,:] = [self.ftr0[loc[0],loc[1]], self.ftr1[loc[0],loc[1]]]
+                self.trainY[idx] = trainYdict[(loc[0], loc[1])]
+                try:
+                    pass
+                    # print self.ID2People[loc[0]], self.ID2domain[loc[1]], self.trainX[idx,:], self.trainY[idx]
+                except:
+                    print 'EXCEPTION :('
         self.trainX = csr_matrix(self.trainX)
         self.trainY = csr_matrix(self.trainY)
 
-    def getDimensionalityReductionModel(self, split=False):
-        trainX = self.trainX.toarray()
-        trainY = self.trainY.toarray()
-
-        if split:
-            trainX, self.testX, trainY, self.testY = train_test_split(self.trainX, self.trainY, test_size=0.2, random_state=0)
-
-        self.reductionModel = PCA(n_components=0.95)
-        self.reductionModel.fit(trainX)
-        self.trainX_red = self.reductionModel.transform(trainX)
-
-        if split:
-            self.testX_red = self.reductionModel.transform(self.testX)
-
-    def getLinRegScore(self, inputTuple):
+    def getLinRegScore(self, inputTuple, toReduce=True, model=1):
         if not inputTuple[0] in self.people2ID:
             return 0
         else:
             if inputTuple[0] not in self.people2ID:
                 return 0
             rowID = self.people2ID[inputTuple[0]]
-            colID = self.domain[inputTuple[1]]
-            testRow = self.reductionModel.transform(self.features[rowID,:].toarray())
-            return np.dot(testRow, self.linearWeights[:,colID])
+            colID = self.domain2ID[inputTuple[1]]
+            if toReduce:    # Assumed that model=1. toReduce=1 and model=2 not allowed!
+                testRow = self.reductionModel.transform(self.features[rowID,:].toarray())
+            else:
+                if model == 1:
+                    testRow = self.features[rowID,:].toarray()
+                    return np.dot(testRow, self.linearWeights[:,colID])
+                elif model == 2:
+                    testRow = [self.ftr0[rowID,colID], self.ftr1[rowID,colID]]
+                    return np.dot(testRow, self.linearWeights)
 
-    def predict(self, accuracyFlag=False):
+    def predict(self, accuracyFlag=False, toReduce=True, model=1):
         # This is for the train-test split. Given a file with test tuples in it,
         # this function computes the predictions for each of tuples, with optional computation of accuracy
         f1 = codecs.open(self.testFile, 'r', encoding='utf-8')
@@ -128,7 +136,7 @@ class NationalitiesLinearRegression():
         for idx, line in enumerate(f1.readlines()):
             lineSplit = line.strip().split('\t')
             inputTuple = (lineSplit[0], lineSplit[1])
-            score = self.getLinRegScore(inputTuple)
+            score = self.getLinRegScore(inputTuple, toReduce=toReduce, model=model)
             if score < 0:
                 score = 0
             elif score > 7:
@@ -146,10 +154,26 @@ class NationalitiesLinearRegression():
         f1.close()
         f2.close()
 
+    def getDimensionalityReductionModel(self, split=False, toReduce=True):
+        trainX = self.trainX.toarray()
+        trainY = self.trainY.toarray()
+
+        if split:
+            trainX, self.testX, trainY, self.testY = train_test_split(self.trainX, self.trainY, test_size=0.2, random_state=0)
+
+        if toReduce:
+            self.reductionModel = PCA(n_components=0.95)
+            self.reductionModel.fit(trainX)
+            self.trainX_red = self.reductionModel.transform(trainX)
+        else:
+            self.trainX_red = trainX
+        if split:
+            self.testX_red = self.reductionModel.transform(self.testX)
+
     def trainRegressionModel(self, trainX, trainY):
         # self.regModel = linear_model.LinearRegression()
-        # self.regModel = linear_model.Lasso(alpha=0.01)
-        self.regModel = linear_model.Ridge(alpha=0.01)
+        # self.regModel = linear_model.Lasso(alpha=0.00001)
+        self.regModel = linear_model.Ridge(alpha=0.5)
 
         self.regModel.fit(trainX, trainY)
         self.linearWeights = self.regModel.coef_.transpose()
@@ -164,6 +188,6 @@ if __name__ == '__main__':
     testFile = '../data/wsdm/accuracyTestLinearReg/nationalityTest.train'
     outputFile = '../data/wsdm/accuracyTestLinearReg/linearRegOutput.txt'
 
-    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile)
+    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile,toReduce=False, model=2)
 
     print 'Time elapsed: ', time.time()-t0
