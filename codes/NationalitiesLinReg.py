@@ -143,8 +143,11 @@ class NationalitiesLinearRegression():
                 score = 7
             if accuracyFlag:
                 truth = int(lineSplit[2])
+                score = np.ceil(score)
+
                 diff.append(abs(truth-score))
-                comparison.append(truth-2<=score<=truth+2)
+                comparison.append(abs(truth-score)<=2)
+                # print inputTuple, score, truth
             f2.write(inputTuple[0]+'\t' + inputTuple[1] +'\t' + str(round(score))+'\n')
 
         if accuracyFlag:
@@ -178,12 +181,15 @@ class NationalitiesLinearRegression():
         self.regModel.fit(trainX, trainY)
         self.linearWeights = self.regModel.coef_.transpose()
 
+        # print self.linearWeights
+        # self.linearWeights = [70,1]
+
 if __name__ == '__main__':
     t0 = time.time()
 
     # All the files:
     domainFile = '../data/wsdm/nationalities'
-    featureFile = '../data/wsdm/nationalities.json'
+    featureFile = '../data/wsdm/nationalities_1020.json'
     trainFile = '../data/wsdm/accuracyTestLinearReg/nationalityTrain.train'
     testFile = '../data/wsdm/accuracyTestLinearReg/nationalityTest.train'
     outputFile = '../data/wsdm/accuracyTestLinearReg/linearRegOutput.txt'
