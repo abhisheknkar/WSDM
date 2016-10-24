@@ -6,7 +6,7 @@ from sklearn.decomposition import PCA
 import json
 import codecs
 from pprint import pprint
-from sklearn import linear_model
+from sklearn import linear_model, svm
 from sklearn.cross_validation import train_test_split
 from sklearn import preprocessing
 import matplotlib.pyplot as plt
@@ -36,8 +36,9 @@ class NationalitiesLinearRegression():
 
         self.getDimensionalityReductionModel(toReduce=toReduce)
         self.trainRegressionModel(self.trainX_red, self.trainY.toarray())
+        self.predict(accuracyFlag=True, toReduce=toReduce, model=model)
 
-        # self.predict(accuracyFlag=True, toReduce=toReduce, model=model)
+        # self.performCV(self.trainX_red, self.trainY.toarray(),folds=5)
 
     def readDomains(self, domainFile):
         f = open(domainFile, 'r')
@@ -76,6 +77,7 @@ class NationalitiesLinearRegression():
     def getTrainMatrices(self, trainFile, model=1):
         trainYdict = {}
         f = codecs.open(trainFile, mode='r', encoding='utf-8')
+
         for line in f.readlines():
             line = line.strip()
             l = line.split('\t')
@@ -114,17 +116,21 @@ class NationalitiesLinearRegression():
         else:
             if inputTuple[0] not in self.people2ID:
                 return 0
+
             rowID = self.people2ID[inputTuple[0]]
             colID = self.domain2ID[inputTuple[1]]
-            if toReduce:    # Assumed that model=1. toReduce=1 and model=2 not allowed!
-                testRow = self.reductionModel.transform(self.features[rowID,:].toarray())
-            else:
-                if model == 1:
+
+            if model == 1:
+                if toReduce:    # Assumed that model=1. toReduce=1 and model=2 not allowed!
+                    testRow = self.reductionModel.transform(self.features[rowID,:].toarray())
+                else:
                     testRow = self.features[rowID,:].toarray()
-                    return np.dot(testRow, self.linearWeights[:,colID])
-                elif model == 2:
-                    testRow = [self.ftr0[rowID,colID], self.ftr1[rowID,colID]]
-                    return np.dot(testRow, self.linearWeights)
+                return self.regModel.predict(testRow)[0][colID]
+                # return np.dot(testRow, self.linearWeights[:,colID])+self.regModel.intercept_
+            elif model == 2:
+                testRow = [self.ftr0[rowID,colID], self.ftr1[rowID,colID]]
+                return self.regModel.predict(testRow)
+                # return np.dot(testRow, self.linearWeights)+self.regModel.intercept_
 
     def predict(self, accuracyFlag=False, toReduce=True, model=1):
         # This is for the train-test split. Given a file with test tuples in it,
@@ -135,27 +141,26 @@ class NationalitiesLinearRegression():
         if accuracyFlag:
             comparison = []
             diff = []
-
         for idx, line in enumerate(f1.readlines()):
             lineSplit = line.strip().split('\t')
             inputTuple = (lineSplit[0], lineSplit[1])
             score = self.getLinRegScore(inputTuple, toReduce=toReduce, model=model)
+
             if score < 0:
                 score = 0
             elif score > 7:
                 score = 7
+
             if accuracyFlag:
                 truth = int(lineSplit[2])
                 score = np.ceil(score)
 
                 diff.append(abs(truth-score))
                 comparison.append(abs(truth-score)<=2)
-                # print inputTuple, score, truth
             f2.write(inputTuple[0]+'\t' + inputTuple[1] +'\t' + str(round(score))+'\n')
-
         if accuracyFlag:
             accuracy = float(sum(comparison)) / len(comparison)
-            print 'Accuracy: ', accuracy, '\nMean absolute error: ', np.mean(diff)
+            print 'Test Accuracy: ', accuracy, '\nMean absolute error: ', np.mean(diff)
 
         f1.close()
         f2.close()
@@ -177,28 +182,46 @@ class NationalitiesLinearRegression():
             self.testX_red = self.reductionModel.transform(self.testX)
 
     def trainRegressionModel(self, trainX, trainY):
-        X_train, X_test, y_train, y_test = train_test_split(trainX, trainY,test_size=0.2,random_state=0)
-
         # self.regModel = linear_model.LinearRegression()
-        # self.regModel = linear_model.Lasso(alpha=0.00001)
-        # self.regModel = linear_model.Ridge(alpha=0.01)
+        self.regModel = linear_model.Lasso(alpha=0.1)
+        # self.regModel = linear_model.Ridge(alpha=0.1)
         #poly = preprocessing.PolynomialFeatures(degree=2)
         #trainX = poly.fit_transform(trainX)
-
-        self.regModel = linear_model.Ridge(alpha=0.000001)
-
 
         #self.regModel = linear_model.BayesianRidge()
 
         self.regModel.fit(trainX, trainY)
-        # self.linearWeights = self.regModel.coef_.transpose()
-
-        self.regModel.fit(X_train, y_train)
-        print self.regModel.coef_
-        print self.regModel.score(X_test, y_test)
-
+        self.linearWeights = self.regModel.coef_.transpose()
         # print self.linearWeights
         # self.linearWeights = [70,1]
+
+    def performCV(self, trainX, trainY, folds):
+        sample = np.random.permutation(np.arange(trainY.shape[0]))
+        # sample = np.arange(trainY.size)
+        foldSize = int(trainY.shape[0]/folds)
+        totalCorrect = 0
+        for i in range(folds):
+            validationSet = sample[foldSize*i: foldSize*(i+1)].tolist()
+            trainingSet = sample[:foldSize*i].tolist() + sample[foldSize*(i+1):].tolist()
+
+            # self.regModel = linear_model.LinearRegression()
+            self.regModel = linear_model.Lasso(alpha=0.9)
+            # self.regModel = linear_model.Ridge(alpha=0.9)
+            # self.regModel = svm.SVC()
+
+            self.regModel.fit(trainX[trainingSet], trainY[trainingSet])
+            predY = np.ceil(self.regModel.predict(trainX[validationSet]))
+
+            predY[np.where(predY<0)]=0
+            predY[np.where(predY>7)]=7
+
+            # for i in range(len(validationSet)):
+            #     print predY[i], trainY[validationSet[i]]
+            # predY = np.reshape(predY, (len(predY),1))
+
+            accuracy = len(np.where(np.absolute(predY - trainY[validationSet])<=2)[0])
+            totalCorrect += accuracy
+        print 'CV Average Accuracy: ', float(totalCorrect) / len(trainY)
 
     def plotdata(self):
         # fig = plt.subplots()
@@ -242,8 +265,8 @@ if __name__ == '__main__':
     testFile = '../data/wsdm/accuracyTestLinearReg/nationalityTest.train'
     outputFile = '../data/wsdm/accuracyTestLinearReg/linearRegOutput.txt'
 
-    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile,toReduce=True, model=2)
+    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile,toReduce=False, model=1)
 
-    print('Time elapsed: ', time.time()-t0)
+    print 'Time elapsed: ', time.time()-t0
 
-    regObject.plotdata()
+    # regObject.plotdata()
