@@ -8,6 +8,9 @@ import codecs
 from pprint import pprint
 from sklearn import linear_model
 from sklearn.cross_validation import train_test_split
+from sklearn import preprocessing
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 class NationalitiesLinearRegression():
     domain2ID = {}
@@ -101,7 +104,7 @@ class NationalitiesLinearRegression():
                     pass
                     # print self.ID2People[loc[0]], self.ID2domain[loc[1]], self.trainX[idx,:], self.trainY[idx]
                 except:
-                    print 'EXCEPTION :('
+                    print('EXCEPTION :(')
         self.trainX = csr_matrix(self.trainX)
         self.trainY = csr_matrix(self.trainY)
 
@@ -179,6 +182,13 @@ class NationalitiesLinearRegression():
         # self.regModel = linear_model.LinearRegression()
         # self.regModel = linear_model.Lasso(alpha=0.00001)
         # self.regModel = linear_model.Ridge(alpha=0.01)
+        #poly = preprocessing.PolynomialFeatures(degree=2)
+        #trainX = poly.fit_transform(trainX)
+
+        self.regModel = linear_model.Ridge(alpha=0.000001)
+
+
+        #self.regModel = linear_model.BayesianRidge()
 
         self.regModel.fit(trainX, trainY)
         # self.linearWeights = self.regModel.coef_.transpose()
@@ -190,6 +200,38 @@ class NationalitiesLinearRegression():
         # print self.linearWeights
         # self.linearWeights = [70,1]
 
+    def plotdata(self):
+        # fig = plt.subplots()
+        #ax = fig.add_subplot(111)
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        #
+        # labelDict = {}
+        # trainX = self.trainX.toarray()
+        # trainY = self.trainY.toarray()
+        #
+        # for idx in range(len(trainX)):
+        #     y = trainY[idx,0]
+        #     if y not in labelDict:
+        #         labelDict[y] = [[],[]]
+        #     labelDict[y][0].append(trainX[idx,0])
+        #     labelDict[y][1].append(trainX[idx,1])
+        # colorList = ['b','g','r','c','k','y','m','b']
+        # marker = ['o','o','o','o','o','o','o','+']
+        #
+        # for key in labelDict:
+        #     key = int(key)
+        #     plt.scatter(labelDict[key][0],labelDict[key][1],color=colorList[key],marker=marker[key])
+        x=self.trainX.toarray()[:, 0]
+        y=self.trainX.toarray()[:,1]
+        z=self.trainY.toarray()
+        ax.scatter(x,y,z)
+
+        ax.plot(x, y, z, c = 'r', marker='k')
+        # handles, labels = ax.get_legend_handles_labels()
+        # ax.legend(handles, labels)
+        plt.show()
+
 if __name__ == '__main__':
     t0 = time.time()
 
@@ -200,6 +242,8 @@ if __name__ == '__main__':
     testFile = '../data/wsdm/accuracyTestLinearReg/nationalityTest.train'
     outputFile = '../data/wsdm/accuracyTestLinearReg/linearRegOutput.txt'
 
-    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile,toReduce=False, model=2)
+    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile,toReduce=True, model=2)
 
-    print 'Time elapsed: ', time.time()-t0
+    print('Time elapsed: ', time.time()-t0)
+
+    regObject.plotdata()
