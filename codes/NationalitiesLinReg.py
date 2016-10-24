@@ -34,7 +34,7 @@ class NationalitiesLinearRegression():
         self.getDimensionalityReductionModel(toReduce=toReduce)
         self.trainRegressionModel(self.trainX_red, self.trainY.toarray())
 
-        self.predict(accuracyFlag=True, toReduce=toReduce, model=model)
+        # self.predict(accuracyFlag=True, toReduce=toReduce, model=model)
 
     def readDomains(self, domainFile):
         f = open(domainFile, 'r')
@@ -174,12 +174,18 @@ class NationalitiesLinearRegression():
             self.testX_red = self.reductionModel.transform(self.testX)
 
     def trainRegressionModel(self, trainX, trainY):
+        X_train, X_test, y_train, y_test = train_test_split(trainX, trainY,test_size=0.2,random_state=0)
+
         # self.regModel = linear_model.LinearRegression()
         # self.regModel = linear_model.Lasso(alpha=0.00001)
-        self.regModel = linear_model.Ridge(alpha=0.5)
+        # self.regModel = linear_model.Ridge(alpha=0.01)
 
         self.regModel.fit(trainX, trainY)
-        self.linearWeights = self.regModel.coef_.transpose()
+        # self.linearWeights = self.regModel.coef_.transpose()
+
+        self.regModel.fit(X_train, y_train)
+        print self.regModel.coef_
+        print self.regModel.score(X_test, y_test)
 
         # print self.linearWeights
         # self.linearWeights = [70,1]
