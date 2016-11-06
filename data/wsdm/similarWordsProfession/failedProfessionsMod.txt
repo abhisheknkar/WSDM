@@ -1,0 +1,11 @@
+Alchemist	Alchemy
+Broadcaster	Presenter
+Coach	Coach (sport) 
+Commentator	Sports commentator
+Conductor	Conductor (music)
+Conservationist	Conservation biology
+Entertainer	Entertainment
+Evangelist	Evangelism
+Model	Model (person)
+Pilot	Pilot (aeronautics)
+Statesman	Politician

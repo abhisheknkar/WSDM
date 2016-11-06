@@ -35,10 +35,11 @@ class NationalitiesLinearRegression():
         self.getTrainMatrices(trainFile, model=model)
 
         self.getDimensionalityReductionModel(toReduce=toReduce)
-        self.trainRegressionModel(self.trainX_red, self.trainY.toarray())
-        self.predict(accuracyFlag=True, toReduce=toReduce, model=model)
+        # self.trainRegressionModel(self.trainX_red, self.trainY.toarray())
+        # self.predict(accuracyFlag=True, toReduce=toReduce, model=model)
 
         # self.performCV(self.trainX_red, self.trainY.toarray(),folds=5)
+        self.plotdata()
 
     def readDomains(self, domainFile):
         f = open(domainFile, 'r')
@@ -182,10 +183,10 @@ class NationalitiesLinearRegression():
             self.testX_red = self.reductionModel.transform(self.testX)
 
     def trainRegressionModel(self, trainX, trainY):
-        # self.regModel = linear_model.LinearRegression()
-        self.regModel = linear_model.Lasso(alpha=0.1)
+        self.regModel = linear_model.LinearRegression()
+        # self.regModel = linear_model.Lasso(alpha=0.1)
         # self.regModel = linear_model.Ridge(alpha=0.1)
-        #poly = preprocessing.PolynomialFeatures(degree=2)
+        # poly = preprocessing.PolynomialFeatures(degree=2)
         #trainX = poly.fit_transform(trainX)
 
         #self.regModel = linear_model.BayesianRidge()
@@ -205,8 +206,8 @@ class NationalitiesLinearRegression():
             trainingSet = sample[:foldSize*i].tolist() + sample[foldSize*(i+1):].tolist()
 
             # self.regModel = linear_model.LinearRegression()
-            self.regModel = linear_model.Lasso(alpha=0.9)
-            # self.regModel = linear_model.Ridge(alpha=0.9)
+            # self.regModel = linear_model.Lasso(alpha=0.01)
+            self.regModel = linear_model.Ridge(alpha=0.1)
             # self.regModel = svm.SVC()
 
             self.regModel.fit(trainX[trainingSet], trainY[trainingSet])
@@ -217,55 +218,78 @@ class NationalitiesLinearRegression():
 
             # for i in range(len(validationSet)):
             #     print predY[i], trainY[validationSet[i]]
-            # predY = np.reshape(predY, (len(predY),1))
+            predY = np.reshape(predY, (len(predY),1))
 
             accuracy = len(np.where(np.absolute(predY - trainY[validationSet])<=2)[0])
             totalCorrect += accuracy
         print 'CV Average Accuracy: ', float(totalCorrect) / len(trainY)
 
     def plotdata(self):
-        # fig = plt.subplots()
-        #ax = fig.add_subplot(111)
+        colorList = ['b','g','r','k','b','g','r','k']
+        marker = ['o','o','o','o','x','x','x','x']
         fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-        #
-        # labelDict = {}
-        # trainX = self.trainX.toarray()
-        # trainY = self.trainY.toarray()
-        #
-        # for idx in range(len(trainX)):
-        #     y = trainY[idx,0]
-        #     if y not in labelDict:
-        #         labelDict[y] = [[],[]]
-        #     labelDict[y][0].append(trainX[idx,0])
-        #     labelDict[y][1].append(trainX[idx,1])
-        # colorList = ['b','g','r','c','k','y','m','b']
-        # marker = ['o','o','o','o','o','o','o','+']
-        #
-        # for key in labelDict:
-        #     key = int(key)
-        #     plt.scatter(labelDict[key][0],labelDict[key][1],color=colorList[key],marker=marker[key])
-        x=self.trainX.toarray()[:, 0]
-        y=self.trainX.toarray()[:,1]
-        z=self.trainY.toarray()
-        ax.scatter(x,y,z)
+        # ax = fig.add_subplot(111, projection='3d')
+        ax = fig.add_subplot(111)
 
-        ax.plot(x, y, z, c = 'r', marker='k')
-        # handles, labels = ax.get_legend_handles_labels()
-        # ax.legend(handles, labels)
+        labelDict = {}
+        trainX = self.trainX.toarray()
+        trainY = self.trainY.toarray()
+        for idx1 in range(trainY.shape[0]):
+            y = trainY[idx1,0]
+            if y not in labelDict:
+                labelDict[y] = [[],[]]
+            labelDict[y][0].append(trainX[idx1,0])
+            labelDict[y][1].append(trainX[idx1,1])
+
+        keyRange = ['0','1','2','6','7']
+        lg = []
+        for key in keyRange:
+            key = int(key)
+            lg.append(plt.scatter(labelDict[key][0],labelDict[key][1],color=colorList[key],marker=marker[key], s=100))
+
+        plt.legend(tuple(lg),
+            tuple(keyRange),
+            scatterpoints=1,
+            loc='lower left',
+            ncol=6,
+            fontsize=16)
+        plt.xlabel('Feature 1', fontsize=18)
+        plt.ylabel('Feature 2', fontsize=18)
+        fig.suptitle('Distribution of training points across the feature space', fontsize=20)
+
+        # 3D SCATTER
+        # x=self.trainX.toarray()[:, 0]
+        # y=self.trainX.toarray()[:,1]
+        # z=self.trainY.toarray()
+        # ax.scatter(x,y,z)
+
         plt.show()
 
-if __name__ == '__main__':
-    t0 = time.time()
-
+def runNationalitiesTask():
     # All the files:
     domainFile = '../data/wsdm/nationalities'
-    featureFile = '../data/wsdm/nationalities_1020.json'
+    featureFile = '../data/wsdm/nationalities.json'
     trainFile = '../data/wsdm/accuracyTestLinearReg/nationalityTrain.train'
     testFile = '../data/wsdm/accuracyTestLinearReg/nationalityTest.train'
     outputFile = '../data/wsdm/accuracyTestLinearReg/linearRegOutput.txt'
 
+    regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile,toReduce=False, model=2)
+
+def runProfessionsTask():
+    # All the files:
+    domainFile = '../data/wsdm/professions'
+    featureFile = '../data/wsdm/professions.json'
+    trainFile = '../data/wsdm/accuracyTestLinearReg/professionTrainZ.train'
+    testFile = '../data/wsdm/accuracyTestLinearReg/professionTestZ.train'
+    outputFile = '../data/wsdm/accuracyTestLinearReg/linearRegOutputProfession.txt'
+
     regObject = NationalitiesLinearRegression(domainFile, featureFile, trainFile, testFile, outputFile,toReduce=False, model=1)
+
+if __name__ == '__main__':
+    t0 = time.time()
+
+    # runProfessionsTask()
+    runNationalitiesTask()
 
     print 'Time elapsed: ', time.time()-t0
 

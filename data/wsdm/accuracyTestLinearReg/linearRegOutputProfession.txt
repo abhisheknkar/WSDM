@@ -1,0 +1,103 @@
+Jerry Kleczka	Politician	5.0
+Jerry Kleczka	Accountant	0.0
+Rudy Wurlitzer	Screenwriter	1.0
+Rudy Wurlitzer	Novelist	6.0
+Rudy Wurlitzer	Actor	0.0
+Steven Johnson (author)	Science writer	0.0
+Steven Johnson (author)	Journalist	1.0
+Steven Johnson (author)	Author	2.0
+Tim Herlihy	Television Producer	1.0
+Tim Herlihy	Screenwriter	4.0
+Tim Herlihy	Lawyer	1.0
+Tim Herlihy	Film Score Composer	1.0
+Tim Herlihy	Film Producer	2.0
+Tim Herlihy	Actor	0.0
+Kerry Kennedy	Social activist	2.0
+Kerry Kennedy	Lawyer	1.0
+Kerry Kennedy	Author	0.0
+Riker Lynch	Singer-songwriter	7.0
+Riker Lynch	Guitarist	5.0
+Riker Lynch	Dancer	1.0
+Riker Lynch	Bassist	4.0
+Riker Lynch	Actor	5.0
+Jacques Bergier	Writer	1.0
+Jacques Bergier	Engineer	0.0
+Johnnetta B. Cole	Professor	0.0
+Johnnetta B. Cole	Anthropologist	0.0
+Roy Rowland (film director)	Television director	0.0
+Roy Rowland (film director)	Film Producer	2.0
+Roy Rowland (film director)	Film Director	3.0
+Arthur Rooke	Screenwriter	0.0
+Arthur Rooke	Film Director	5.0
+Arthur Rooke	Actor	7.0
+Harold MacGrath	Screenwriter	3.0
+Harold MacGrath	Novelist	6.0
+Paul Hersey	Manager	0.0
+Paul Hersey	Consultant	0.0
+Paul Hersey	Author	0.0
+Jared Kushner	Media proprietor	0.0
+Jared Kushner	Businessperson	3.0
+Steve Lambke	Singer-songwriter	5.0
+Steve Lambke	Guitarist	0.0
+Suzanne Sena	Television Show Host	0.0
+Suzanne Sena	Journalist	0.0
+Suzanne Sena	Actor	1.0
+Michael Jackson (anthropologist)	Educator	1.0
+Michael Jackson (anthropologist)	Anthropologist	0.0
+Peter Sumner	Writer	1.0
+Peter Sumner	Television director	0.0
+Peter Sumner	Actor	7.0
+Monique Gabrielle	Pin-up girl	0.0
+Monique Gabrielle	Film Producer	4.0
+Monique Gabrielle	Actor	4.0
+Carol Chumney	Politician	0.0
+Carol Chumney	Lawyer	2.0
+Alex Munro (comedian)	Comedian	7.0
+Alex Munro (comedian)	Actor	4.0
+Tabitha Stevens	Pornographic actor	0.0
+Tabitha Stevens	Film Producer	2.0
+Matt Brandstein	Writer	0.0
+Matt Brandstein	Cartoonist	0.0
+Matt Brandstein	Actor	0.0
+Mark Ciardi	Film Producer	5.0
+Mark Ciardi	Baseball player	0.0
+Mark Ciardi	Actor	7.0
+Levine Andrade	Conductor	5.0
+Levine Andrade	Composer	0.0
+Ba U	Politician	0.0
+Ba U	Lawyer	1.0
+Jonathan Aaron	Professor	0.0
+Jonathan Aaron	Poet	7.0
+Thembo Nyombi	Politician	7.0
+Thembo Nyombi	Economist	1.0
+Steve White (producer)	Film Producer	0.0
+Steve White (producer)	Actor	0.0
+Mindy Aloff	Journalist	1.0
+Mindy Aloff	Editor	0.0
+Vilen Künnapu	Professor	0.0
+Vilen Künnapu	Architect	0.0
+Janet Fox (author)	Publisher	0.0
+Janet Fox (author)	Book editor	0.0
+Janet Fox (author)	Author	3.0
+Gary Cohn (journalist)	Professor	0.0
+Gary Cohn (journalist)	Journalist	7.0
+Stan Edmonds	Screenwriter	0.0
+Stan Edmonds	Actor	4.0
+JoAnn D. Osmond	Politician	7.0
+JoAnn D. Osmond	Insurance Broker	0.0
+Guillermo de Cun	Television Producer	1.0
+Guillermo de Cun	Television director	1.0
+Guillermo de Cun	Screenwriter	0.0
+Guillermo de Cun	Radio producer	0.0
+Guillermo de Cun	Music Director	0.0
+Guillermo de Cun	Actor	7.0
+Tericka Dye	Teacher	1.0
+Tericka Dye	Pornographic actor	0.0
+David K Williams	Philanthropist	1.0
+David K Williams	Entrepreneur	1.0
+David K Williams	Businessperson	1.0
+David K Williams	Author	2.0
+Jon Penington	Screenwriter	7.0
+Jon Penington	Film Producer	7.0
+Costas Kadis	Politician	7.0
+Costas Kadis	Physician	1.0
