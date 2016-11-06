@@ -1,113 +1,113 @@
-Accountant	body	cpa	state	accountant	accountant	accountancy	accountant	accountant	canada	auditor
+Accountant	body	cpa	state	accountant certified public	accountant member	accountancy	accountant management	accountant chartered institute	canada	auditor
 Activist	activist	activism
 Actor	theatre	woman	role	actress	play	character	director	term	audience	century
 Alchemist	work	alchemist	century	greek	text	metal	element	gold	medicine	chemistry
 Animator	animation	animator	character	artist	film
 Announcer	announcer
-Architect	building	project	architecture	construction	use	architect	client	jurisdiction	technology
-Art Director	art	department
-Art critic	art
-Artist	term	word	art
+Architect	building	project	architecture	construction	use	architect design	client	jurisdiction	technology
+Art Director	art director	department
+Art critic	art critic
+Artist	term	word	art artist
 Astrologer	astronomer
-Astronaut	term	american	nasa	mission	cosmonaut	astronaut	flight	pilot	spaceflight	traveler
-Attorneys in the United States	attorney	bar	law	court	law
-Audio Engineer	audio	engineer	music	audio	woman	audio	producer	system	production	engineer
+Astronaut	term	american	nasa	mission	cosmonaut	astronaut space	flight	pilot	spaceflight	traveler
+Attorneys in the United States	attorney	bar state	law state	court	law practice
+Audio Engineer	audio engineer	engineer sound	music	audio sound	woman	audio engineering	producer	system	production	engineer recording
 Author	author	work	publisher	copyright	book	text	editor	authorship
 Bandleader	bandleader
-Barrister	barrister	bar	practice	jurisdiction	attorney	barrister	counsel	inn	advocate	member
+Barrister	barrister solicitor	bar barrister	practice	jurisdiction	attorney	barrister court	counsel	inn	advocate	member
 Baseball Manager	manager
-Baseball player	baseball	bat	world	league	year	rule	pitch	league	baseball	isbn
-Basketball player	nba	court	play	basketball	college	point	basketball	ball	time	basketball
+Baseball player	baseball game	bat	world	league professional	year	rule	pitch	league national	baseball team	isbn
+Basketball player	nba	court	play	basketball played	college	point	basketball game	ball player	time	basketball woman
 Bassist	bass	jazz	bassist
 Biologist	study	research	biologist	organism	work	plant
-Bishop	bishop	clergy	title	roman	see	member	bishop	pope	conference	authority
+Bishop	bishop church	clergy	title	roman	see	member	bishop catholic	pope	conference	authority
 Bodybuilder	bodybuilder	muscle	competition	body	protein	contest	organization	sandow	weight	physique
 Book editor	editor	copy	author	work
 Broadcaster	presenter
 Bureaucrat	government
 Businessperson	business	businessperson
-Carpenter	carpentry	building	training	journeyman	skill	construction	carpenter	timber	use	material
+Carpenter	carpentry	building	training	journeyman	skill	construction	carpenter work	timber	use	material
 Cartoonist	cartoonist	work	artist	strip	cartoon	style
 Cinematographer	cinematography	society
-Civil servant	civil	government	examination	employee	state	civil	system	bureaucracy	candidate	position
-Coach	player	coach	manager	team	coach	football	level	coach	development
+Civil servant	civil service	government	examination	employee	state	civil servant	system	bureaucracy	candidate	position
+Coach	player	coach sport	manager	team	coach head	football	level	coach professional	development
 Comedian	comedy
 Commentator	commentator	sport	broadcast	announcer	color
-Composer	composer	performer	work	art	piece	composer	woman	form	music	period
-Conductor	beat	hand	time	conductor	technique	baton	use	performance	performer	concert
-Conservationist	biology	value	human	nature	world	conservation	society	forest	resource	loss
-Consultant	consulting	consultant	organization	work	firm	client
-Costume Designer	costume
+Composer	composer music	performer	work	art	piece	composer era	woman	form	music musical	period
+Conductor	beat	hand	time	conductor orchestra	technique	baton	use	performance	performer	concert
+Conservationist	biology conservation	value	human	nature	world	conservation specie	society	forest	resource	loss
+Consultant	consulting	consultant management	organization	work	firm	client consultant
+Costume Designer	costume designer
 Curator	curator	art	museum	isbn
-Dancer	movement	dance	dancer	rhythm	ballet	dance	dance	example	dance	dance
+Dancer	movement	dance music	dancer	rhythm	ballet	dance may	dance style	example	dance form	dance many
 Diplomat	diplomat
-Disc jockey	dj	dj	record	computer	technique	file	dj	dj	dj	mix
+Disc jockey	dj music	dj software	record	computer	technique	file	dj play	dj use	dj sound	mix
 Drummer	drummer	drum
 Economist	economist
 Editor	editor	copy	author	work
-Educator	country	university	student	education	system	education	child	teacher	development	curriculum
-Electrical engineer	system	power	design	computer	device	control	circuit	technology	engineering	isbn
-Engineer	engineer	title	work	design	education	time	engineer
-Entertainer	film	dance	time	music	entertainment	story	theatre	part	purpose	world
-Entrepreneur	venture	opportunity	firm	risk	business	resource	term	study	business	schumpeter
-Essayist	work	university	essay	essay	author	student	essayist	essay	paper
+Educator	country	university	student	education school	system	education primary	child	teacher	development	curriculum
+Electrical engineer	system	power	design	computer	device	control	circuit	technology	engineering isbn	isbn press
+Engineer	engineer engineering	title	work	design	education	time	engineer professional
+Entertainer	film	dance	time	music	entertainment form	story	theatre	part	purpose	world
+Entrepreneur	venture	opportunity	firm	risk	business entrepreneurship	resource	term	study	business entrepreneur	schumpeter
+Essayist	work	university	essay writing	essay form	author	student	essayist	essay film	paper
 Evangelist	evangelism	evangelist	church
 Explorer	explorer	exploration	island	zealand
 Farmer	farmer
-Fashion Designer	design	designer	school	art	design	institute	style	design	isbn	college
-Fighter pilot	isbn	ace	aircraft	jet	fighter
-Film Director	director	example
-Film Editor	shot	director	picture	editor	montage	scene	assistant	show	time	credit
-Film Producer	film	producer	executive
-Film Score Composer	composer	composer	composer	work	director	example	award	time	movie	library
-Film critic	movie	film
-Financial adviser	adviser	insurance	broker	adviser	security	product	advice
+Fashion Designer	design fashion	designer fashion	school	art design	design university	institute	style	design designer	isbn	college design
+Fighter pilot	isbn	ace	aircraft	jet	fighter force pilot
+Film Director	director film	example
+Film Editor	shot	director	picture	editor film	montage	scene	assistant editor	show	time	credit
+Film Producer	film producer	producer production	executive producer
+Film Score Composer	composer film	composer score	composer music	work	director film	example	award	time	movie	library
+Film critic	movie	film review
+Financial adviser	adviser financial	insurance	broker	adviser investment	security	product	advice
 Fisherman	fisherman
-Football player	football	association	study	injury
+Football player	football player	association football	study	injury
 Friar	order	friar
 Guitarist	guitarist	guitar	list	magazine
 Historian	history	work	century	historiography	source	event	french
 Illustrator	illustration	illustrator
-Insurance Broker	broker	state
-Inventor	inventor	idea	process	invention	concept
+Insurance Broker	broker insurance	state
+Inventor	inventor	idea	process	invention patent	concept
 Investor	investor	investment	market	fund	strategy
-Jazz Pianist	jazz	chord	pianist
+Jazz Pianist	jazz piano	chord	pianist
 Journalist	journalist
-Judge	court	state	court	court	court	lordship	court	judge	judge	appeal
+Judge	court supreme	state	court high	court referred	court judge justice	lordship	court honour	judge presiding	judge referred	appeal court
 Keyboard player	keyboard
-Law professor	degree	law	education	law	llb	law	examination	law	bachelor	law
-Lawyer	court	practice	advocate	country	state	case	barrister	client	bar	law
+Law professor	degree law	law school	education legal	law university	llb	law program	examination	law legal	bachelor degree	law student
+Lawyer	court	practice	advocate	country lawyer	state united	case	barrister	client	bar	law lawyer
 Legislator	legislator
-Librarian	woman	library	information	material	library	librarianship	degree	technology	research	role
+Librarian	woman	library public	information library	material	library service	librarianship	degree library	technology	research	role
 Librettist	music	librettist	composer	work	dialogue	century	word
-Lifeguard	beach	surf	lifeguard	swimmer	aid	victim	use	organization	lifeguard	lifeguard
-Manager	degree	work	include	management	executive	employee	plan	level	century	board
+Lifeguard	beach lifeguard	surf	lifeguard pool	swimmer	aid	victim	use	organization	lifeguard water	lifeguard service
+Manager	degree	work	include	management organization	executive	employee	plan	level	century	board
 Mathematician	university	science
 Media proprietor	medium
 Merchant	merchant
 Meteorologist	insignia	naval
-Military Officer	commission	officer	officer	state	program	corp	training	navy	u
-Military aviator	aircraft	war	role	aviation	force	troop
+Military Officer	commission	officer warrant	officer rank	state united	program	corp	training	navy	u
+Military aviator	aircraft	war world	role	aviation	force	troop
 Missionary	century	muslim	islam	buddhism	world	buddhist	china	sikh	country	group
-Model	fashion	agency	magazine	model	time	body	model	runway	product	model
-Multi-instrumentalist	bass	player	music	instrument	jazz	band	rock
-Music Arranger	arrangement	arranger	band	instrument	music	section
-Music Director	director	orchestra
-Music Producer	sound	music	studio	record	production	audio	engineer	producer	instrument	artist
+Model	fashion model	agency model	magazine	model modelling	time	body	model show	runway	product	model work
+Multi-instrumentalist	bass	player	music	instrument play	jazz	band	rock
+Music Arranger	arrangement	arranger	band	instrument	music	section string
+Music Director	director music	orchestra
+Music Producer	sound	music	studio	record	production	audio	engineer	producer recording	instrument	artist
 Music artist	music
 Musician	music
 Neurologist	neurologist	neurology	medicine	disorder	patient	disease	study	year	training	stroke
-Novelist	author	identity	example	fiction	writer	novel	genre	publishing	novelist	literature
+Novelist	author	identity	example	fiction	writer	novel novelist	genre	publishing	novelist work	literature
 Orator	orator	speech	isbn
-Orchestrator	orchestration	music	orchestra	instrument	film	melody	chord	work	composer	play
-Organist	music	organ
+Orchestrator	orchestration	music	orchestra	instrument	film	melody	chord	work	composer orchestrator	play
+Organist	music	organ organist
 Pastor	pastor	clergy	term	shepherd
-Peace activist	pacifist	writer	leader	content	advocate	anti-vietnam	american	founder	activist	activist
-Performance Artist	art	artist	work	action	audience	isbn
+Peace activist	pacifist	writer	leader	content return table	advocate	anti-vietnam war	american anti-war	founder	activist anti-war	activist born peace
+Performance Artist	art performance	artist performance	work	action	audience	isbn
 Philanthropist	philanthropy	charity	million	human	century	foundation	humanity
 Philosopher	philosophy
 Photographer	photograph	use
-Physician	medicine	specialist	practice	country	doctor	year	state	degree	term	world
+Physician	medicine	specialist	practice	country	doctor	year	state united	degree	term	world
 Physicist	physicist
 Pianist	pianist
 Pilot	pilot	flight	aviation	aircraft	airline
@@ -115,58 +115,58 @@ Pin-up girl	woman	pin-up
 Playback Singer	singer
 Playwright	play	playwright	character
 Poet	ethanol	poet
-Police officer	officer	duty	line	police	suicide	enforcement	emergency	police	death	rate
+Police officer	officer police	duty	line	police stress	suicide	enforcement law	emergency	police work	death	rate
 Political Activist	activist	activism
 Polymath	polymath	renaissance	man
-Pornographic actor	industry	actress	film	performer	sex	actor	porn	woman	actor
+Pornographic actor	industry	actress	film pornographic	performer	sex	actor pornographic	porn	woman	actor film
 Presenter	presenter
 Priest	priesthood	church	temple	religion	ancient	tradition	god	roman	bishop	word
 Production designer	production
-Professor	university	research	professor	professor	country
-Prophet	prophecy	god	church	jesus	message	movement	time	founder	messenger	muhammad
+Professor	university	research	professor title	professor used	country
+Prophet	prophecy	god prophet	church	jesus	message	movement	time	founder	messenger	muhammad
 Psychiatrist	psychiatry	psychiatrist	year	training
-Psychologist	year	program	state	psychologist	training	practice	license	research	profession	requirement
+Psychologist	year	program	state	psychologist title	training	practice	license	research	profession	requirement
 Public speaker	speech	organization	communication	event
-Publisher	author	book	work	publication	process	sale	company	distribution	book	newspaper
-Rabbi	rabbi	ordination	orthodox	study	orthodox	yeshiva	rabbi	student	israel	community
-Racing driver	race	car	driver	world	car	event	car	fia	le	auto
-Radio personality	personality	music	record	broadcast	program	dj	american	station	show	disc
+Publisher	author	book publisher	work	publication	process	sale	company	distribution	book publishing	newspaper
+Rabbi	rabbi woman	ordination	orthodox woman	study	orthodox rabbi	yeshiva	rabbi title	student	israel	community
+Racing driver	race	car racing	driver	world	car championship	event	car sport	fia	le man	auto
+Radio personality	personality radio	music radio	record	broadcast	program	dj radio	american	station	show	disc jockey radio
 Radio producer	radio
-Rapper	music	flow	rhyme	mc	style	hip	word	beat	term	rakim
-Record producer	sound	music	studio	record	production	audio	engineer	producer	instrument	artist
-Rodeo clown	bull	clown	rider	bullfighter
-Rodeo performer	bull	clown	rider	bullfighter
-Roman emperor	caesar	office	senate	byzantine	empire	constantinople	emperor	republican	julius	consul
+Rapper	music	flow	rhyme	mc	style	hip hop	word	beat	term	rakim
+Record producer	sound	music	studio	record	production	audio	engineer	producer recording	instrument	artist
+Rodeo clown	bull	clown rodeo	rider	bullfighter
+Rodeo performer	bull	clown rodeo	rider	bullfighter
+Roman emperor	caesar	office	senate	byzantine	empire roman	constantinople	emperor empire	republican	julius	consul
 Sailor	merchant	mariner	ship	seaman	member	sea	department	steward	navy	officer
 Scenic Designer	design
-Science writer	journalist
+Science writer	journalist science
 Scientist	science	scientist	term	knowledge
 Screenwriter	screenwriter	project	film	script
 Showgirl	showgirl
-Singer	sound	process	use	style	term	music	area	function	register	music
+Singer	sound	process	use	style	term	music vocal	area	function	register vocal	music singing
 Singer-songwriter	music	tradition	rock	folk	artist	style	bard	singer	genre
-Soccer Player	football	association	study	injury
+Soccer Player	football player	association football	study	injury
 Social activist	activist	activism
 Songwriter	songwriter	writer	music	publisher
 Sound Sculptor	sound
-Speechwriter	speechwriter	president	speech
+Speechwriter	speechwriter	president wrote	speech
 Surveyor	measurement	position	instrument	distance	point	use	angle	level	system	measure
 Swimmer	swimmer	event	pool	competition	time	water	suit	race	championship	stroke
-Teacher	student	school	classroom	teach	state	education	study	discipline	salary	enthusiasm
-Television Producer	star	writer	producer	executive	television	production
+Teacher	student teacher	school teacher	classroom	teach	state	education teacher	study	discipline	salary teacher	enthusiasm
+Television Producer	star	writer	producer show	executive producer	television	production
 Television Show Host	presenter
 Television director	director
 Television presenter	presenter
-Tennis player	player	serve	racket	service	server	shot	world	game	side	junior
+Tennis player	player tennis	serve	racket	service	server	shot	world	game point	side	junior
 Tentmaker	work
-Theatre Director	director
+Theatre Director	director theatre
 Theatrical producer	producer	production
 Theologian	theology	study	university	tradition	century	religion	god	discipline	term
 Theoretical Physicist	theory
-Tutor	school	education	student
-Urban planner	land	planner	development	use	institute	plan
-Violinist	bow	violinist	playing	music	hand	player	pitch	instrument	play	band
-Violist	violent	country	act	intimate	relationship	group	year	form	health	maltreatment
-Voice Actor	actor	character	game
+Tutor	school	education	student tutor
+Urban planner	land	planner planning urban	development urban	use	institute	plan urban
+Violinist	bow	violinist	playing	music violin	hand	player	pitch	instrument violin	play	band
+Violist	violent	country	act	intimate partner violence	relationship	group	year	form violence	health violence	maltreatment
+Voice Actor	actor voice	character	game
 Warrior	warrior	class	code
-Writer	work	play	whose	use	text	book	genre	writer	idea	name
+Writer	work writer	play	whose	use	text	book	genre	writer writing	idea	name

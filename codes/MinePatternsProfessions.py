@@ -389,7 +389,7 @@ class FrequentPatterns():
                     if tag[0][1] == 'NN':
                         if profession not in similarWords:
                             similarWords[profession] = []
-                        similarWords[profession].append(word)
+                        similarWords[profession].append(' '.join(line.strip().split()[1:]))
                         left -= 1
                 else:
                     break
